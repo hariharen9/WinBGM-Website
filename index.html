@@ -1,30 +1,103 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap"
-    />
-    <title>WinBGM — Windows Background Manager</title>
-    <meta
-      name="description"
-      content="WinBGM is a portable, open-source Windows 10 and 11 app that shows background apps, startup entries, services, and scheduled tasks in one readable inventory."
-    />
-    <meta property="og:title" content="WinBGM — Windows Background Manager" />
-    <meta
-      property="og:description"
-      content="See what runs in the background, review what changed, and make supported startup changes with a recorded, reversible history."
-    />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#090b0e" />
+  <meta name="description" content="WinBGM is a safer, more thoughtful way to understand and manage what runs in the background on Windows." />
+  <title>WinBGM — Take control of what runs in the background</title>
+  <link rel="icon" type="image/png" href="assets/app-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="top-progress" id="topProgress"></div>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="WinBGM home">
+      <span class="brand-mark"><img src="assets/app-icon.png" alt="" /></span>
+      <span>Win<span class="brand-light">BGM</span></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#features">Capabilities</a><a href="#safety">Safety model</a><a href="#workflow">How it works</a><a href="https://github.com/hariharen9/WinBGM" target="_blank" rel="noreferrer">GitHub <svg viewBox="0 0 16 16"><path d="M5 3h8v8M13 3 4 12"/></svg></a>
+    </nav>
+    <div class="header-actions"><a class="header-link" href="https://github.com/hariharen9/WinBGM#quick-start">Documentation <svg viewBox="0 0 16 16"><path d="M5 3h8v8M13 3 4 12"/></svg></a><a class="button button-small button-primary" href="https://github.com/hariharen9/WinBGM/releases" target="_blank" rel="noreferrer">Get WinBGM <span>↗</span></a></div>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+  </header>
+  <div class="mobile-menu" id="mobileMenu"><a href="#features">Capabilities</a><a href="#safety">Safety model</a><a href="#workflow">How it works</a><a href="https://github.com/hariharen9/WinBGM">GitHub</a><a href="https://github.com/hariharen9/WinBGM/releases">Download WinBGM ↗</a></div>
+
+  <main>
+    <section class="hero section-wrap">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> A clearer view of Windows background activity <span class="eyebrow-line"></span></div>
+        <h1>Your PC.<br /><span class="headline-muted">Your background.</span><br /><span class="headline-accent">Your call.</span></h1>
+        <p class="hero-description">See what starts, what stays running, and what quietly comes back. WinBGM brings Windows background activity into focus — with a safety-first way to manage it.</p>
+        <div class="hero-actions"><a class="button button-primary" href="https://github.com/hariharen9/WinBGM/releases" target="_blank" rel="noreferrer">Download for Windows <span class="button-arrow">↗</span></a><a class="button button-quiet" href="#product">Explore the interface <span>↓</span></a></div>
+        <div class="hero-meta"><span class="meta-item"><i class="windows-glyph">⊞</i> Windows 10 &amp; 11</span><span class="meta-separator"></span><span class="meta-item"><i class="meta-check">✓</i> Portable executable</span><span class="meta-separator"></span><span class="meta-item">MIT licensed</span></div>
+      </div>
+      <div class="hero-visual reveal reveal-delay" id="product">
+        <div class="visual-orbit orbit-one"></div><div class="visual-orbit orbit-two"></div>
+        <div class="visual-caption"><span class="caption-dot"></span> THE BACKGROUND, MADE VISIBLE <span class="caption-index">01 / 04</span></div>
+        <div class="app-window" id="appWindow">
+          <div class="window-titlebar"><div class="window-brand"><img src="assets/app-icon.png" alt=""/><b>WinBGM</b><span class="window-version">PREVIEW</span></div><div class="window-controls"><span>—</span><span>□</span><span>×</span></div></div>
+          <div class="window-content">
+            <aside class="mock-sidebar"><div class="mock-nav-label">MANAGE</div><div class="mock-nav active"><span class="nav-icon">▦</span> Overview</div><div class="mock-nav"><span class="nav-icon">◫</span> Applications <small>24</small></div><div class="mock-nav"><span class="nav-icon">⚙</span> Services</div><div class="mock-nav"><span class="nav-icon">◷</span> Scheduled tasks</div><div class="mock-nav"><span class="nav-icon">⌖</span> Startup locations</div><div class="mock-divider"></div><div class="mock-nav-label">OTHER</div><div class="mock-nav"><span class="nav-icon">▣</span> Snapshots &amp; Diffs</div><div class="mock-nav"><span class="nav-icon">↶</span> Change history</div><div class="mock-nav"><span class="nav-icon">☷</span> Settings</div><div class="mock-machine"><span class="machine-glyph">▣</span><span><b>DESKTOP-PC</b><small>Windows 11 Pro</small></span><i></i></div></aside>
+            <div class="mock-main"><div class="mock-toolbar"><span>Overview</span><div class="mock-toolbar-actions"><span class="mock-scan"><i></i> Scan now</span><span>Focus Mode</span><span>Export</span></div></div>
+              <div class="mock-page-head"><div><div class="mock-kicker">SYSTEM OVERVIEW</div><h3>Your background, at a glance.</h3><p>A live inventory of what's configured to run on this PC.</p></div><div class="mock-scan-time"><span class="live-dot"></span> DEMO INVENTORY</div></div>
+              <div class="mock-stats"><div class="mock-stat"><span>APPLICATIONS</span><b>24</b><small>Across all locations</small></div><div class="mock-stat"><span>RUNNING NOW</span><b>08</b><small>Live process activity</small></div><div class="mock-stat"><span>NEEDS A LOOK</span><b class="stat-warn">03</b><small>Review recommended</small></div><div class="mock-stat"><span>MEMORY IN USE</span><b>1.42<span class="stat-unit"> GB</span></b><small>Background working set</small></div></div>
+              <div class="mock-section-head"><b>Application activity</b><span>Grouped by application <span class="mock-filter">⌕ &nbsp; Filter</span></span></div>
+              <div class="mock-table"><div class="mock-table-head"><span>APPLICATION</span><span>COMPONENTS</span><span>ACTIVITY</span><span>LAUNCH</span></div>
+                <div class="mock-row"><div class="mock-app"><span class="app-logo app-discord">◉</span><span><b>Discord</b><small>Discord Inc.</small></span></div><span>3 components</span><span><i class="status-dot running"></i> Running</span><span class="launch-on">At sign-in</span></div>
+                <div class="mock-row"><div class="mock-app"><span class="app-logo app-steam">◉</span><span><b>Steam</b><small>Valve Corporation</small></span></div><span>2 components</span><span><i class="status-dot"></i> Stopped</span><span>Manual</span></div>
+                <div class="mock-row"><div class="mock-app"><span class="app-logo app-teams">◈</span><span><b>Microsoft Teams</b><small>Microsoft Corporation</small></span></div><span>2 components</span><span><i class="status-dot running"></i> Running</span><span class="launch-on">At sign-in</span></div>
+                <div class="mock-row"><div class="mock-app"><span class="app-logo app-spotify">◉</span><span><b>Spotify</b><small>Spotify AB</small></span></div><span>1 component</span><span><i class="status-dot"></i> Stopped</span><span>Disabled</span></div>
+              </div>
+              <div class="mock-bottom"><span><i class="shield-mini">✓</i> Changes are backed up before they're applied</span><span>LOCAL MACHINE &nbsp;·&nbsp; READ-ONLY PREVIEW</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="float-note note-left"><span class="note-icon">⌁</span><span><b>12</b><small>persistence vectors</small></span></div>
+        <div class="float-note note-right"><span class="note-check">✓</span><span><b>Reversible by design</b><small>Nothing gets deleted</small></span></div>
+      </div>
+      <div class="hero-bottom"><span>BUILT FOR WINDOWS USERS WHO LIKE TO KNOW WHAT'S RUNNING.</span><span class="scroll-cue">SCROLL TO EXPLORE <span>↓</span></span></div>
+    </section>
+
+    <section class="statement section-wrap reveal"><div class="statement-label">THE PROBLEM</div><div class="statement-body"><p>Windows gives you pieces of the picture.</p><h2>WinBGM brings the<br /><em>whole background</em> into view.</h2></div><div class="statement-aside">Startup entries. Services. Scheduled tasks. Browser bridges. Shell extensions. All the little things that can keep running long after you stop thinking about them.</div></section>
+
+    <section class="product-section section-wrap" id="features">
+      <div class="section-heading reveal"><div><div class="eyebrow"><span class="eyebrow-dot"></span> LOOK UNDER THE HOOD</div><h2>Not just what's open.<br /><span class="muted-heading">What keeps coming back.</span></h2></div><p>WinBGM connects the dots between processes and the mechanisms that launch them — so you can understand the behaviour, not just the symptom.</p></div>
+      <div class="feature-grid">
+        <article class="feature-card feature-large reveal"><div class="feature-topline"><span>01 / DISCOVERY</span><span class="feature-arrow">↗</span></div><div class="feature-graphic discovery-graphic"><div class="scan-ring ring-a"></div><div class="scan-ring ring-b"></div><div class="scan-core"><span>W</span></div><div class="scan-node node-a"><i></i> SERVICES</div><div class="scan-node node-b"><i></i> RUN KEYS</div><div class="scan-node node-c"><i></i> TASKS</div><div class="scan-node node-d"><i></i> WMI</div><div class="scan-node node-e"><i></i> SHELL</div><div class="scan-node node-f"><i></i> DRIVERS</div></div><div class="feature-copy"><h3>One inventory.<br />Twelve ways in.</h3><p>Discover background launch points across services, registry, scheduled tasks, startup folders, shell extensions, native messaging hosts, WMI and more. Then see them grouped by the app they belong to.</p></div></article>
+        <article class="feature-card feature-boot reveal"><div class="feature-topline"><span>02 / PERFORMANCE</span><span class="feature-arrow">↗</span></div><div class="boot-graphic"><div class="boot-label">BOOT SEQUENCE <span>EVENT ID 100–109</span></div><div class="boot-timeline"><div class="boot-axis"><span>0s</span><span>10s</span><span>20s</span><span>30s</span></div><div class="boot-bar-row"><span>Kernel</span><i style="--w:35%"></i><b>8.4s</b></div><div class="boot-bar-row"><span>Desktop</span><i style="--w:57%"></i><b>13.7s</b></div><div class="boot-bar-row"><span>Post-boot</span><i style="--w:86%"></i><b>20.6s</b></div><div class="boot-marker"><span>Illustrative timeline</span></div></div></div><div class="feature-copy"><h3>Find what's slowing<br />your startup.</h3><p>Read Windows boot diagnostics and surface app-level degradation events. See boot duration and the processes associated with startup delays.</p></div></article>
+        <article class="feature-card feature-sleep reveal"><div class="feature-topline"><span>03 / POWER</span><span class="feature-arrow">↗</span></div><div class="sleep-graphic"><div class="sleep-moon">◔</div><div class="sleep-wave wave-one"></div><div class="sleep-wave wave-two"></div><div class="sleep-pill"><i></i> ACTIVE REQUEST DETECTED</div><div class="sleep-process"><span class="process-dot"></span><span><b>Audio service</b><small>System request · Display</small></span><span class="process-state">BLOCKING</span></div></div><div class="feature-copy"><h3>Know what's keeping<br />your PC awake.</h3><p>Inspect active Windows power requests and identify apps or drivers preventing sleep or display idle.</p></div></article>
+        <article class="feature-card feature-sentinel reveal"><div class="feature-topline"><span>04 / AWARENESS</span><span class="feature-arrow">↗</span></div><div class="sentinel-graphic"><div class="sentinel-orbit"></div><div class="sentinel-shield">✓</div><div class="sentinel-alert"><span class="alert-led"></span><span><b>Startup entry changed</b><small>A new Run key was detected</small></span><em>NOW</em></div><div class="sentinel-label">RE-ADD SENTINEL <span>MONITORING</span></div></div><div class="feature-copy"><h3>Catch the quiet<br />comebacks.</h3><p>The background persistence watcher monitors Run and RunOnce changes, then alerts you when an application adds itself back.</p></div></article>
+      </div>
+    </section>
+
+    <section class="safety-section" id="safety"><div class="section-wrap safety-inner"><div class="safety-copy reveal"><div class="eyebrow"><span class="eyebrow-dot"></span> SAFETY IS THE FOUNDATION</div><h2>Control without<br /><span class="muted-heading">the cliff edge.</span></h2><p>System-level tools should never make risky changes feel casual. WinBGM is built around a simple principle: understand first, preserve the original state, and make every supported change reversible.</p><a class="text-link" href="https://github.com/hariharen9/WinBGM#-how-safe-is-it" target="_blank" rel="noreferrer">Read the safety architecture <span>↗</span></a></div>
+      <div class="safety-panel reveal reveal-delay"><div class="safety-panel-head"><span><i class="panel-shield">✓</i> CHANGE PROTECTION</span><span class="panel-status"><i></i> ENFORCED IN GO</span></div><div class="safety-step"><span class="step-no">01</span><div><b>Protected items stay protected</b><p>Core Windows processes, critical services and installed security software are guarded by the backend.</p></div><span class="step-state">GUARDED</span></div><div class="safety-step"><span class="step-no">02</span><div><b>Original state is saved first</b><p>A pre-flight history snapshot is written before a supported modification proceeds.</p></div><span class="step-state">BACKED UP</span></div><div class="safety-step"><span class="step-no">03</span><div><b>Changes are verified</b><p>WinBGM re-checks the live state and verifies the result after applying a change.</p></div><span class="step-state">VERIFIED</span></div><div class="safety-step"><span class="step-no">04</span><div><b>Unexpected results roll back</b><p>If a write fails verification, the backend attempts to restore the original state.</p></div><span class="step-state">RESTORABLE</span></div><div class="safety-foot"><span>ZERO-DELETION APPROACH</span><span>CHANGE HISTORY &nbsp;·&nbsp; BATCH RESTORE</span></div></div></div></section>
+
+    <section class="workflow-section section-wrap" id="workflow"><div class="section-heading reveal"><div><div class="eyebrow"><span class="eyebrow-dot"></span> A MORE THOUGHTFUL WORKFLOW</div><h2>From discovery<br />to <span class="muted-heading">deliberate action.</span></h2></div><p>No mystery switches. No blind cleanup. A clear sequence that lets you see what is happening before deciding what to do about it.</p></div>
+      <div class="workflow-track"><article class="workflow-step reveal"><div class="workflow-number">01</div><div class="workflow-art art-scan"><div class="scan-window"><div class="scan-window-head"><i></i><i></i><i></i><span>INVENTORY SCAN</span></div><div class="scan-lines"><i></i><i></i><i></i><i></i><i></i></div><div class="scan-complete"><b>✓</b> Inventory ready</div></div></div><h3>Scan your system</h3><p>Build a read-only inventory of apps, components and startup locations on your PC.</p></article><article class="workflow-step reveal reveal-delay"><div class="workflow-number">02</div><div class="workflow-art art-inspect"><div class="inspect-stack"><div class="inspect-chip"><span class="chip-icon">◈</span><span><b>Publisher verified</b><small>Digital signature</small></span><i>✓</i></div><div class="inspect-chip"><span class="chip-icon">⌁</span><span><b>Startup component</b><small>Registry · Run key</small></span><i>↗</i></div><div class="inspect-chip"><span class="chip-icon">◷</span><span><b>Last activity</b><small>Live process state</small></span><i>●</i></div></div></div><h3>Understand each item</h3><p>Review its publisher, signature, path, launch behaviour, process activity and related components.</p></article><article class="workflow-step reveal reveal-delay-2"><div class="workflow-number">03</div><div class="workflow-art art-restore"><div class="restore-card"><div class="restore-icon">↶</div><b>Change recorded</b><span>Original state saved</span><div class="restore-line"><i></i></div><div class="restore-footer"><span>HISTORY.JSON</span><em>READY TO RESTORE</em></div></div></div><h3>Act. Then undo if needed.</h3><p>Apply supported changes with safeguards, keep an audit trail, and restore individual changes or a batch session.</p></article></div>
+    </section>
+
+    <section class="more-section section-wrap"><div class="more-heading reveal"><div class="eyebrow"><span class="eyebrow-dot"></span> MORE THAN A STARTUP MANAGER</div><h2>Useful detail.<br /><span class="muted-heading">Without the noise.</span></h2></div><div class="more-grid"><div class="more-item reveal"><span class="more-icon">◉</span><div><h3>Process controls</h3><p>Gracefully close, suspend, resume or end a process — with live process and memory polling.</p></div><span class="more-index">01</span></div><div class="more-item reveal"><span class="more-icon">▤</span><div><h3>Snapshots &amp; visual diffs</h3><p>Save a baseline before installing software, then compare it with the current inventory.</p></div><span class="more-index">02</span></div><div class="more-item reveal"><span class="more-icon">⌕</span><div><h3>Reputation checks</h3><p>Look up SHA-256 hashes with VirusTotal and inspect Authenticode signatures and signer identity.</p></div><span class="more-index">03</span></div><div class="more-item reveal"><span class="more-icon">⌘</span><div><h3>Command palette</h3><p>Jump to apps, tasks and services quickly with Ctrl + K.</p></div><span class="more-index">04</span></div><div class="more-item reveal"><span class="more-icon">◐</span><div><h3>Your interface, your way</h3><p>Dark, Light, AMOLED and System Sync themes, six accent colours and adjustable UI scale.</p></div><span class="more-index">05</span></div><div class="more-item reveal"><span class="more-icon">⇩</span><div><h3>Exportable records</h3><p>Keep a portable record of your inventory and change history for your own review.</p></div><span class="more-index">06</span></div></div></section>
+
+    <section class="platform-section"><div class="section-wrap platform-inner reveal"><div class="platform-copy"><div class="eyebrow"><span class="eyebrow-dot"></span> MADE FOR WINDOWS</div><h2>Native where it<br /><span class="muted-heading">matters most.</span></h2><p>WinBGM is a desktop application built with Go and Wails, using Windows-native APIs for system inspection and management.</p><div class="platform-tags"><span>WINDOWS 10</span><span>WINDOWS 11</span><span>GO 1.23+</span><span>WAILS V2</span></div></div><div class="platform-visual"><div class="platform-glow"></div><div class="platform-orbit"></div><div class="platform-icon"><img src="assets/winbgm-mark.png" alt="WinBGM mark" /></div><div class="platform-chip chip-x64"><b>x64</b><span>Intel / AMD</span></div><div class="platform-chip chip-arm"><b>ARM64</b><span>Windows on ARM</span></div><div class="platform-chip chip-x86"><b>x86</b><span>32-bit Windows</span></div><div class="platform-caption">ONE PORTABLE EXECUTABLE<br />NO INSTALLER REQUIRED</div></div></div></section>
+
+    <section class="faq-section section-wrap"><div class="faq-intro reveal"><div class="eyebrow"><span class="eyebrow-dot"></span> GOOD TO KNOW</div><h2>Before you<br /><span class="muted-heading">take control.</span></h2><p>A few practical details about what WinBGM is — and what it isn't.</p></div><div class="faq-list reveal">
+      <details><summary>Does WinBGM delete startup entries? <span>+</span></summary><p>No. Its documented safety approach avoids deleting files or registry entries. For supported startup changes it uses native state controls, such as StartupApproved bitmasks, service startup-type changes and Task Scheduler toggles.</p></details>
+      <details><summary>Can I undo a change? <span>+</span></summary><p>WinBGM records original values in its local change history before applying supported modifications. You can restore individual entries, and batch sessions support a one-action restore.</p></details>
+      <details><summary>Does it replace Task Manager or Autoruns? <span>+</span></summary><p>It is a focused companion for understanding and managing background activity. It combines app-grouped discovery with safeguards, live process context, boot and power diagnostics, snapshots and history.</p></details>
+      <details><summary>Which Windows versions and architectures are supported? <span>+</span></summary><p>The project targets Windows 10 and Windows 11, with release binaries listed for x64, ARM64 and 32-bit x86 Windows.</p></details>
+      <details><summary>Does the website download or install anything automatically? <span>+</span></summary><p>No. The download button opens the project's GitHub Releases page. You choose the release asset you want to download.</p></details>
+    </div></section>
+
+    <section class="final-cta section-wrap"><div class="cta-rule"></div><div class="cta-content reveal"><div class="cta-mark"><img src="assets/app-icon.png" alt="" /></div><div class="eyebrow"><span class="eyebrow-dot"></span> GET A CLEARER PICTURE</div><h2>Know what's running.<br /><span class="muted-heading">Choose what stays.</span></h2><p>Take a closer look at the background activity on your Windows PC — with a little more context and a lot more care.</p><div class="cta-actions"><a class="button button-primary button-large" href="https://github.com/hariharen9/WinBGM/releases" target="_blank" rel="noreferrer">Get WinBGM for Windows <span class="button-arrow">↗</span></a><a class="button button-quiet" href="https://github.com/hariharen9/WinBGM" target="_blank" rel="noreferrer">Explore the source <span>↗</span></a></div><span class="cta-footnote">FREE &amp; OPEN SOURCE <i></i> MIT LICENSE <i></i> WINDOWS 10 / 11</span></div></section>
+  </main>
+  <footer class="site-footer section-wrap"><div class="footer-top"><a class="brand" href="#top"><span class="brand-mark"><img src="assets/app-icon.png" alt="" /></span><span>Win<span class="brand-light">BGM</span></span></a><p>A clearer view of what runs<br />in the background.</p><div class="footer-links"><a href="#features">Capabilities</a><a href="#safety">Safety</a><a href="https://github.com/hariharen9/WinBGM">GitHub ↗</a><a href="https://github.com/hariharen9/WinBGM/releases">Releases ↗</a></div></div><div class="footer-bottom"><span>© 2026 WinBGM. Open source under the MIT License.</span><span>BUILT FOR WINDOWS. BUILT WITH CARE.</span><a href="#top">BACK TO TOP ↑</a></div></footer>
+  <script src="script.js"></script>
+</body>
 </html>
