@@ -246,3 +246,57 @@ body{font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;-moz-osx
   .download-main,.download-aside{padding:20px 18px}
   .build-row b{padding:5px 0}
 }
+
+/* ============================================================
+   STICKY HEADER
+   ============================================================ */
+html{scroll-padding-top:96px}
+body{overflow-x:clip}
+.site-header{position:sticky;top:0;border-bottom:0}
+.site-header::before{content:"";position:absolute;top:0;bottom:0;left:calc(50% - 50vw);width:100vw;background:rgba(9,11,14,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);box-shadow:0 14px 36px rgba(0,0,0,.3);z-index:-1}
+@media(max-width:800px){
+  .mobile-menu{position:fixed;top:68px;left:0;right:0}
+  .site-header::before{background:rgba(9,11,14,.94)}
+}
+@media(prefers-reduced-motion:reduce){.site-header::before{-webkit-backdrop-filter:none;backdrop-filter:none;background:#090b0e}}
+
+/* ============================================================
+   HERO DECLUTTER
+   - Headline sized to its 3 lines (no bad wraps), narrower gap
+   - Vertical rhythm: eyebrow / H1 / copy / actions / meta / foot
+   - Window repositioned & right-aligned, no copy collision
+   - Mock window internals tightened so last row never clips
+   ============================================================ */
+.hero{min-height:860px;padding-top:118px}
+.hero-copy{max-width:560px}
+.hero h1{font:800 clamp(46px,5vw,64px)/1.08 var(--display);letter-spacing:-4px;margin:26px 0 24px}
+.hero-description{max-width:520px}
+.hero-actions{margin-top:34px}
+.hero-meta{margin-top:58px}
+.hero-visual{top:96px;right:-140px;width:748px;height:612px}
+.app-window{top:42px;left:28px;width:688px;height:502px}
+.mock-main{padding:0 16px 8px}
+.mock-toolbar{height:36px}
+.mock-page-head{margin-top:15px}
+.mock-stats{margin-top:13px;gap:8px}
+.mock-stat{height:70px}
+.mock-section-head{margin-top:15px}
+.mock-row{height:44px}
+.mock-bottom{margin-top:12px}
+.note-left{left:-10px;top:420px}
+.note-right{right:-16px;top:480px}
+@media(max-width:1100px){
+  .hero{min-height:940px;padding-top:100px}
+  .hero-visual{top:500px;right:50%;transform:translateX(50%) scale(.86);opacity:1}
+}
+@media(max-width:800px){
+  .hero{min-height:1010px}
+  .hero-visual{top:520px;transform:translateX(50%) scale(.7)}
+  .hero-description{font-size:14.5px}
+  .hero-meta{margin-top:46px}
+}
+@media(max-width:560px){
+  .hero{min-height:1040px}
+  .hero-visual{top:545px;transform:translateX(50%) scale(.56)}
+  .hero-description{font-size:14px}
+}

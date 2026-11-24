@@ -42,13 +42,13 @@
   // Slight pointer-responsive depth on the desktop product window. Disabled for touch/reduced motion.
   const product = document.getElementById('appWindow');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (product && !reduceMotion && window.matchMedia('(pointer:fine)').matches) {
+  if (product && !reduceMotion && window.matchMedia('(pointer:fine)').matches && window.matchMedia('(min-width: 801px)').matches) {
     const visual = product.parentElement;
     visual.addEventListener('pointermove', event => {
       const rect = visual.getBoundingClientRect();
       const x = (event.clientX - rect.left) / rect.width - .5;
       const y = (event.clientY - rect.top) / rect.height - .5;
-      product.style.transform = `perspective(1500px) rotateY(${-7 + x * 3}deg) rotateX(${2 - y * 2}deg)`;
+      product.style.transform = `perspective(1600px) rotateY(${-3.5 + x * 2.2}deg) rotateX(${1.2 - y * 1.6}deg)`;
     });
     visual.addEventListener('pointerleave', () => { product.style.transform = ''; });
   }
