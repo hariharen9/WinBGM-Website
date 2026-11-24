@@ -39,10 +39,29 @@
     });
   });
 
+  // Lenis smooth scrolling — progressive enhancement, native scroll as fallback.
+  if (window.Lenis && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.style.scrollBehavior = 'auto';
+    const lenis = new Lenis({ lerp: 0.11, smoothWheel: true });
+    const raf = time => { lenis.raf(time); requestAnimationFrame(raf); };
+    requestAnimationFrame(raf);
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', event => {
+        const hash = link.getAttribute('href');
+        if (hash.length < 2) return;
+        const target = document.querySelector(hash);
+        if (!target) return;
+        event.preventDefault();
+        lenis.scrollTo(target, { offset: -84 });
+        history.replaceState(null, '', hash);
+      });
+    });
+  }
+
   // Slight pointer-responsive depth on the desktop product window. Disabled for touch/reduced motion.
   const product = document.getElementById('appWindow');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (product && !reduceMotion && window.matchMedia('(pointer:fine)').matches && window.matchMedia('(min-width: 801px)').matches) {
+  if (product && !reduceMotion && window.matchMedia('(pointer:fine)').matches && window.matchMedia('(min-width: 1101px)').matches) {
     const visual = product.parentElement;
     visual.addEventListener('pointermove', event => {
       const rect = visual.getBoundingClientRect();

@@ -300,3 +300,206 @@ body{overflow-x:clip}
   .hero-visual{top:545px;transform:translateX(50%) scale(.56)}
   .hero-description{font-size:14px}
 }
+
+/* ============================================================
+   TYPOGRAPHY & PALETTE REFINEMENT
+   - Type: Schibsted Grotesk (display) / Inter (text) /
+     Instrument Serif (editorial accent) / JetBrains Mono (labels)
+   - Palette: desaturated steel blues, softer glows, calmer panels
+   ============================================================ */
+:root{
+  --bg:#0a0d11;--bg2:#0d1015;--panel:#0f141a;--panel2:#131920;
+  --line:rgba(219,229,240,.07);--line2:rgba(219,229,240,.14);
+  --text:#e9edf2;--muted:#98a2ad;--dim:#6b7683;
+  --blue:#6f9ec4;--cyan:#8fc3cd;--green:#77c3a0;--amber:#d4b285;
+  --font:'Inter',sans-serif;--display:'Schibsted Grotesk',sans-serif;
+  --mono:'JetBrains Mono',monospace;--serif:'Instrument Serif',serif;
+}
+::selection{background:rgba(122,158,187,.28);color:#f2f5f8}
+:focus-visible{outline:1.5px solid rgba(143,178,206,.55);outline-offset:2px;border-radius:4px}
+body:before{background:radial-gradient(ellipse at 76% 8%,rgba(56,88,116,.10),transparent 34%),radial-gradient(ellipse at 3% 52%,rgba(44,70,94,.05),transparent 32%)}
+
+/* --- display type --- */
+.hero h1{font-weight:700;letter-spacing:-3.6px;line-height:1.06}
+.headline-muted,.muted-heading{color:#7e8b98;font-weight:500}
+.section-heading h2,.more-heading h2,.faq-intro h2,.platform-copy h2,.safety-copy h2{font-weight:700;letter-spacing:-2.4px;line-height:1.1}
+.statement-body h2{font-weight:700;letter-spacing:-2.2px}
+.statement-body h2 em{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.1em;color:#dfe7ee;letter-spacing:-.01em}
+.safety-copy h2,.platform-copy h2{font-weight:700}
+.feature-copy h3,.workflow-step h3,.download-step h3{font-weight:650;letter-spacing:-.5px}
+.more-item h3,.guardrail-item b,.surface-item b{font-weight:600}
+.brand{font-weight:700;letter-spacing:-.5px}
+.brand-light{color:#8f9aa6;font-weight:450}
+.eyebrow{letter-spacing:1.5px;color:#8794a2}
+.cta-content h2{font-weight:700;letter-spacing:-2.6px}
+
+/* --- buttons: calmer, arrow-nudge instead of lift --- */
+.button{font-weight:550;letter-spacing:.01em;border-radius:7px}
+.button:hover{transform:none}
+.button-primary{background:#e9edf2;color:#0d1217;box-shadow:0 3px 18px rgba(124,156,186,.1)}
+.button-primary:hover{background:#fbfcfd;box-shadow:0 6px 26px rgba(124,156,186,.16)}
+.button-arrow,.button span{transition:transform .25s ease}
+.button:hover .button-arrow,.button:hover>span:first-child{transform:translate(2px,-2px)}
+.button-quiet{color:#aeb9c4}
+
+/* --- desaturate accents --- */
+.eyebrow-dot,.caption-dot{background:#7fa8cc;box-shadow:0 0 10px rgba(127,168,204,.45)}
+.top-progress{background:linear-gradient(90deg,#5d87a8,#93b8c4)}
+.windows-glyph{color:#8fa5b8}
+.meta-check{color:#77c3a0}
+.status-dot.running{background:#77c3a0;box-shadow:0 0 6px rgba(119,195,160,.35)}
+.launch-on{color:#a9c6dc}
+.boot-bar-row i{background:linear-gradient(90deg,#4d7495,#83a9c2);box-shadow:0 0 12px rgba(77,116,149,.12)}
+.scan-node i{background:#7fa8cc;box-shadow:0 0 6px rgba(127,168,204,.5)}
+.scan-node{color:#9aafc1;border-color:rgba(127,168,204,.18)}
+.scan-core{border-color:rgba(127,178,215,.24);background:linear-gradient(145deg,#152636,#0e141c);box-shadow:0 0 55px rgba(63,116,160,.12),inset 0 0 22px rgba(83,140,185,.08)}
+.scan-ring{border-color:rgba(96,140,178,.11)}
+.visual-orbit{border-color:rgba(112,151,184,.1)}
+.sentinel-shield{border-color:#46708f;background:linear-gradient(145deg,#2e4c66,#12202e);color:#9fc6d4;filter:drop-shadow(0 0 18px rgba(83,140,175,.2))}
+.chip-icon{background:#1d2c3b;color:#93b9d6}
+.app-window{border-color:rgba(159,186,215,.18);box-shadow:0 40px 110px rgba(0,0,0,.5),0 0 90px rgba(63,116,160,.07)}
+.brand-mark{border-color:rgba(129,170,205,.2);background:#0d141d}
+.text-link{color:#b9cddd;border-bottom-color:rgba(148,181,208,.3)}
+.panel-status{color:#74bd9d}
+.more-icon{color:#9fb6c9;background:#0f1720;border-color:rgba(121,158,190,.16)}
+.platform-icon{background:linear-gradient(145deg,#152030,#0e141b);box-shadow:0 20px 55px rgba(0,0,0,.35),0 0 55px rgba(63,116,160,.08)}
+.platform-glow{opacity:.6}
+.site-header::before{background:rgba(10,13,17,.87)}
+.noise{opacity:.02}
+.safety-section{background:#0b1016}
+.download-section{background:#0b1016}
+.safety-panel,.download-main,.download-aside{background:#10161d;border-color:rgba(163,188,212,.12)}
+.surface-item,.guardrail-item{background:linear-gradient(150deg,rgba(18,24,31,.55),rgba(12,16,21,.55))}
+.feature-card{background:linear-gradient(145deg,rgba(18,24,31,.8),rgba(12,16,21,.8))}
+
+/* ============================================================
+   HERO, REBUILT FOR TABLET / MOBILE
+   Below 1100px the visual joins the normal flow: full-size,
+   centered, no scaling tricks, readable mock UI.
+   ============================================================ */
+@media(max-width:1100px){
+  .hero{min-height:0;padding:96px 0 12px}
+  .hero-actions{margin-top:30px}
+  .hero-meta{margin-top:40px}
+  .hero-bottom{position:static;margin-top:52px;flex-wrap:wrap;gap:10px}
+  .hero-visual{position:relative;top:0;right:0;width:100%;height:auto;margin:46px auto 0;transform:none;opacity:1;display:flex;flex-direction:column;align-items:center}
+  .app-window{position:relative;top:0;left:0;width:min(640px,100%);height:auto;transform:none}
+  .window-content{height:auto}
+  .mock-machine{position:static;margin-top:16px}
+  .float-note,.visual-orbit{display:none}
+  .visual-caption{position:static;width:100%;max-width:640px;margin:0 auto 14px;justify-content:center}
+}
+@media(max-width:560px){
+  .mock-sidebar{display:none}
+  .mock-stats{grid-template-columns:repeat(2,1fr);margin-top:12px}
+  .mock-stat{height:auto;min-height:64px;padding:11px 12px}
+  .mock-row,.mock-table-head{grid-template-columns:1.6fr 1fr .95fr;padding-left:10px;padding-right:10px}
+  .mock-row>span:nth-child(2),.mock-table-head>span:nth-child(2){display:none}
+  .mock-row{height:auto;padding:11px 10px}
+  .mock-table-head{height:auto;padding-top:8px;padding-bottom:8px}
+  .mock-app b{font-size:12px}
+  .mock-page-head h3{font-size:16px;letter-spacing:-.4px}
+  .mock-page-head{align-items:flex-start}
+  .mock-scan-time{display:none}
+  .mock-section-head>span{display:none}
+  .mock-toolbar{padding:0 2px}
+  .mock-toolbar-actions span:nth-child(n+2){display:none}
+  .hero-actions{flex-wrap:wrap}
+  .hero-bottom{justify-content:center;text-align:center;gap:6px}
+}
+
+/* ============================================================
+   TYPE NORMALIZATION — one scale, one label style, everywhere
+   Weights: 400 body · 500 UI/soft · 600 titles · 700 display
+   ============================================================ */
+
+/* headings: same family everywhere, same tracking discipline */
+h1,h2,h3{font-family:var(--display);font-weight:600}
+.hero h1,.section-heading h2,.more-heading h2,.faq-intro h2,.platform-copy h2,.safety-copy h2,.statement-body h2,.cta-content h2{font-weight:700}
+.section-heading h2,.more-heading h2,.faq-intro h2,.platform-copy h2,.safety-copy h2{letter-spacing:-2.4px}
+.cta-content h2{letter-spacing:-2.4px}
+.muted-heading,.headline-muted{font-weight:500}
+.brand{font-weight:700;letter-spacing:-.5px}
+
+/* card titles: all display-family 600 now (was mixed Inter/Schibsted) */
+.feature-copy h3,.workflow-step h3,.download-step h3,.mock-page-head h3,.download-main h3,.download-aside h3{font-weight:600;letter-spacing:-.4px}
+.safety-step b,.guardrail-item b{font-family:var(--display);font-weight:600;letter-spacing:-.2px}
+.safety-step b{font-size:13px;color:#dde5ec}
+.guardrail-item b{font-size:13.5px}
+.more-item h3{font-weight:600;font-size:14.5px}
+.build-row b,.platform-chip b{font-family:var(--mono);font-weight:500}
+.platform-facts b{font-weight:550}
+
+/* UI text: one weight for buttons, nav, FAQ, links */
+.button{font-weight:500}
+.faq-list summary{font-weight:500;letter-spacing:-.1px}
+.desktop-nav a,.header-link,.footer-links a{letter-spacing:-.1px}
+
+/* micro labels: all JetBrains Mono, uniform size + tracking tiers */
+.eyebrow{font-size:10.5px;letter-spacing:1.6px}
+.visual-caption,.hero-bottom,.statement-label{font-size:9.5px;letter-spacing:1.2px}
+.safety-panel-head,.guardrails-head{font-size:8.5px;letter-spacing:1.1px;color:#8d99a6}
+.safety-foot,.footer-bottom,.cta-footnote{font-size:8.5px;letter-spacing:.9px}
+.panel-status,.step-state{letter-spacing:.8px}
+.step-no,.more-index,.download-step span,.workflow-number{font-size:9.5px;letter-spacing:.8px}
+.surface-note,.note-ro,.note-protected{letter-spacing:.9px}
+.scan-window-head span{font-family:var(--mono);font-size:8.5px;letter-spacing:1px;color:#8fa3b5}
+.mock-kicker{letter-spacing:1.2px}
+.mock-stat>span,.mock-table-head,.mock-nav-label{letter-spacing:.9px}
+
+/* body lead-in & support copy: consistent sizes per role */
+.section-heading>p,.statement-body p{font-size:15.5px;line-height:1.75}
+.faq-intro p,.platform-copy p,.safety-copy p,.statement-aside,.cta-content>p{font-size:15px;line-height:1.8}
+.feature-copy p,.workflow-step p,.more-item p{font-size:13px;line-height:1.75;color:#98a4b0}
+.safety-step p,.guardrail-item p{font-size:12.5px;line-height:1.7;color:#93a0ab}
+.faq-list details p{font-size:13.5px}
+.download-main-copy,.download-aside>p{font-size:13.5px;line-height:1.75}
+.hero-description{font-size:16.5px;line-height:1.8}
+.surfaces-note{font-size:12.5px}
+
+/* footer + advert strip stay quiet */
+.footer-top p{font-size:13px;line-height:1.6}
+@media(max-width:800px){
+  .section-heading h2,.more-heading h2,.faq-intro h2,.platform-copy h2,.safety-copy h2{letter-spacing:-2px}
+  .hero h1{letter-spacing:-3px}
+}
+
+/* ============================================================
+   POLISH PASS
+   ============================================================ */
+
+/* --- hero: three lines, three voices --- */
+.hero h1{line-height:1.12}
+.hero h1 .headline-muted{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.16em;line-height:1;letter-spacing:-.01em;color:#8695a4}
+.hero h1 .headline-accent{color:#c9def0}
+@media(max-width:800px){.hero h1 .headline-muted{font-size:1.1em}}
+
+/* --- feature cards: no more copy/graphic collisions --- */
+.feature-card{min-height:410px}
+.feature-large{min-height:600px}
+.boot-graphic,.sleep-graphic{inset:58px 15px 210px}
+.discovery-graphic{inset:58px 0 205px}
+.feature-graphic{inset:55px 0 205px}
+.boot-bar-row{grid-template-columns:58px 1fr 46px;padding-right:16px}
+.boot-marker{right:18px}
+.boot-timeline{margin-right:4px}
+@media(max-width:1100px){
+  .feature-large{min-height:560px}
+}
+@media(max-width:560px){
+  .feature-card{min-height:460px}
+  .feature-large{min-height:500px}
+  .boot-graphic,.sleep-graphic{inset:52px 14px 235px}
+  .discovery-graphic{inset:50px 0 225px}
+  .feature-graphic{inset:50px 0 225px}
+}
+
+/* --- scan-core now carries the WinBGM mark --- */
+.scan-core img{width:54px;height:54px;object-fit:contain;display:block}
+.scan-core span{display:none}
+
+/* --- footer credit --- */
+.footer-credit{color:#76828e}
+.footer-credit a{color:#a5c4de;border-bottom:1px dotted rgba(140,180,210,.45);padding-bottom:1px;transition:color .2s,border-color .2s}
+.footer-credit a:hover{color:#d6e8f5;border-bottom-color:rgba(180,210,235,.7)}
+@media(max-width:560px){.footer-bottom{font-size:8px}}
