@@ -1,24 +1,38 @@
 # WinBGM marketing website
 
-A responsive, static product marketing website for [WinBGM](https://github.com/hariharen9/WinBGM).
+A single-page, dependency-free marketing website for [WinBGM](https://github.com/hariharen9/WinBGM),
+a portable Windows background and startup manager.
 
 ## Run locally
 
-No build step or package installation is required. Open `index.html` in a browser, or serve this folder with any static web server:
+No build step — open `index.html` directly, or serve the folder:
 
 ```bash
-python -m http.server 4173
+python -m http.server 8000
+# or: npx serve .
 ```
 
-Then visit http://localhost:4173.
+Then open http://localhost:8000.
 
 ## Structure
 
-- `index.html` — page content, semantic sections and product preview
-- `styles.css` — responsive visual system, layouts, motion and reduced-motion support
-- `script.js` — mobile navigation, scroll progress, reveal transitions and subtle product-preview interaction
-- `assets/` — WinBGM application artwork copied from the supplied source archive
+- `index.html` — all page content, ordered as: hero, problem statement,
+  capabilities (`#features`), startup surfaces (`#surfaces`), safety model
+  (`#safety`), workflow (`#workflow`), extra capabilities, platform, download
+  (`#download`), FAQ, final call to action
+- `styles.css` — dark design system, one file, no preprocessor
+- `script.js` — scroll progress, mobile menu, reveal animations, FAQ
+  accordions, and the mock product window's pointer depth effect
+- `assets/` — app icon and brand mark
+
+## Routing
+
+The whole site lives on one page and navigates with HTML anchor links
+(`#features`, `#safety`, `#workflow`, `#download`). Download and source links
+point to the project's GitHub repository and Releases page.
 
 ## Product accuracy
 
-The content is based on the supplied WinBGM README and source structure. The hero interface is a static marketing representation of the actual application workflow, not a live connection to a Windows machine. The boot timeline is explicitly illustrative. Download and source links point to the project's GitHub repository and Releases page.
+The content is based on the WinBGM README and source structure. The product
+window is a static marketing representation of the application, not a live
+connection to a Windows machine. Sample values are illustrative.
