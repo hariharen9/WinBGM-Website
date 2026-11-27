@@ -5,7 +5,7 @@ a portable Windows background and startup manager.
 
 ## Run locally
 
-No build step — open `index.html` directly, or serve the folder:
+No build step - open `index.html` directly, or serve the folder:
 
 ```bash
 python -m http.server 8000
@@ -16,14 +16,14 @@ Then open http://localhost:8000.
 
 ## Structure
 
-- `index.html` — all page content, ordered as: hero, problem statement,
+- `index.html` - all page content, ordered as: hero, problem statement,
   capabilities (`#features`), startup surfaces (`#surfaces`), safety model
   (`#safety`), workflow (`#workflow`), extra capabilities, platform, download
   (`#download`), FAQ, final call to action
-- `styles.css` — dark design system, one file, no preprocessor
-- `script.js` — scroll progress, mobile menu, reveal animations, FAQ
+- `styles.css` - dark design system, one file, no preprocessor
+- `script.js` - scroll progress, mobile menu, reveal animations, FAQ
   accordions, and the mock product window's pointer depth effect
-- `assets/` — app icon and brand mark
+- `assets/` - app icon and brand mark
 
 ## Routing
 
