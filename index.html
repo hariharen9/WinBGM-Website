@@ -129,6 +129,9 @@
                   <span class="nav-icon">▦</span> Overview
                 </div>
                 <div class="mock-nav">
+                  <span class="nav-icon">◉</span> Live Processes
+                </div>
+                <div class="mock-nav">
                   <span class="nav-icon">◫</span> Applications <small>24</small>
                 </div>
                 <div class="mock-nav">
@@ -138,16 +141,22 @@
                   <span class="nav-icon">◷</span> Scheduled tasks
                 </div>
                 <div class="mock-nav">
-                  <span class="nav-icon">⌖</span> Startup locations
-                </div>
-                <div class="mock-nav">
                   <span class="nav-icon">⊟</span> Uninstaller
                 </div>
                 <div class="mock-nav">
-                  <span class="nav-icon">◉</span> Processes
+                  <span class="nav-icon">✧</span> Junk Cleaner
+                </div>
+                <div class="mock-nav">
+                  <span class="nav-icon">↻</span> Updates
+                </div>
+                <div class="mock-nav">
+                  <span class="nav-icon">⌖</span> Startup locations
                 </div>
                 <div class="mock-divider"></div>
-                <div class="mock-nav-label">OTHER</div>
+                <div class="mock-nav-label">TOOLS &amp; SAFETY</div>
+                <div class="mock-nav">
+                  <span class="nav-icon">⚿</span> File Lock Finder
+                </div>
                 <div class="mock-nav">
                   <span class="nav-icon">▣</span> Snapshots &amp; Diffs
                 </div>
@@ -465,6 +474,86 @@
                 multiple apps, uninstall sequentially, then deep-clean every
                 leftover file and registry key - safely moved to the Recycle
                 Bin.
+              </p>
+            </div>
+          </article>
+          <article class="feature-card feature-junk reveal">
+            <div class="feature-topline">
+              <span>6 / JUNK CLEANER</span><span class="feature-arrow">↗</span>
+            </div>
+            <div class="junk-graphic">
+              <div class="junk-head">
+                <span>9 CLEANUP CATEGORIES</span><span>2.84 GB RECLAIMABLE</span>
+              </div>
+              <div class="junk-row">
+                <i class="junk-dot"></i><span>Temp &amp; shader caches</span
+                ><small>1.42 GB</small>
+              </div>
+              <div class="junk-row">
+                <i class="junk-dot"></i><span>Browser &amp; update caches</span
+                ><small>1.18 GB</small>
+              </div>
+              <div class="junk-row">
+                <i class="junk-dot"></i><span>Crash dumps &amp; old logs</span
+                ><small>240 MB</small>
+              </div>
+              <div class="junk-row guarded">
+                <i class="junk-shield">✓</i
+                ><span>Cookies, logins &amp; history</span
+                ><small>PROTECTED</small>
+              </div>
+              <div class="junk-foot">
+                <span>PERMANENT BY DEFAULT</span
+                ><em>OPTIONAL RECYCLE BIN</em>
+              </div>
+            </div>
+            <div class="feature-copy">
+              <h3>Reclaim space.<br />Keep what matters.</h3>
+              <p>
+                Scan nine junk categories — temp folders, browser and shader
+                caches, Windows Update leftovers, crash dumps and orphaned
+                registry keys — while keeping cookies, logins and history strictly
+                off-limits. Deletes regenerable junk permanently by default, or
+                moves to the Recycle Bin when you choose.
+              </p>
+            </div>
+          </article>
+          <article class="feature-card feature-updates reveal">
+            <div class="feature-topline">
+              <span>7 / WINGET UPDATES</span
+              ><span class="feature-arrow">↗</span>
+            </div>
+            <div class="updates-graphic">
+              <div class="updates-head">
+                <span>WINGET QUEUE</span><span>GUARDRAILED</span>
+              </div>
+              <div class="updates-row done">
+                <i class="un-check">✓</i><span>7-Zip 24.09</span
+                ><small>Updated</small>
+              </div>
+              <div class="updates-row active">
+                <i class="un-spinner"></i><span>Git for Windows</span
+                ><small>Updating…</small>
+              </div>
+              <div class="updates-row err">
+                <i class="updates-warn">!</i><span>Local Runtime</span
+                ><small>Failed · View log</small>
+              </div>
+              <div class="updates-row guarded">
+                <i class="junk-shield">✓</i><span>WinBGM (self)</span
+                ><small>Guarded</small>
+              </div>
+              <div class="updates-foot">
+                <span>SILENT BATCH UPGRADES</span><em>UPDATE LOG</em>
+              </div>
+            </div>
+            <div class="feature-copy">
+              <h3>Update apps.<br />Without the guesswork.</h3>
+              <p>
+                Scan and batch-upgrade installed apps via Windows Package
+                Manager with live per-row status, plain-English failure details
+                and a session Update Log — while keeping WinBGM and pinned
+                packages guarded.
               </p>
             </div>
           </article>
@@ -802,9 +891,9 @@
             <div>
               <h3>Process controls</h3>
               <p>
-                Apply Windows 11 Efficiency Mode (EcoQoS), freeze/resume
-                threads, change priority, gracefully close or end tasks - with
-                live CPU, memory and I/O polling.
+                Inspect the PPID process tree, apply Windows 11 Efficiency Mode
+                (EcoQoS), freeze/resume threads, change priority, gracefully
+                close or end tasks - with live CPU, memory and I/O polling.
               </p>
             </div>
             <span class="more-index">1</span>
@@ -875,10 +964,11 @@
           <div class="more-item reveal">
             <span class="more-icon">↻</span>
             <div>
-              <h3>Auto-update check</h3>
+              <h3>In-app auto-updater</h3>
               <p>
-                Built-in lightweight GitHub Releases version check in Settings →
-                About. Know when a new release is available.
+                Checks GitHub Releases in Settings → About, downloads the
+                matching build, verifies its SHA-256 checksum and launches the
+                update.
               </p>
             </div>
             <span class="more-index">8</span>
@@ -1103,6 +1193,20 @@
               registry entries. For supported startup changes it uses native
               state controls, such as StartupApproved bitmasks, service
               startup-type changes and Task Scheduler toggles.
+            </p>
+          </details>
+          <details>
+            <summary>
+              How does the Junk Cleaner handle my files? <span>+</span>
+            </summary>
+            <p>
+              Regenerable junk (temp folders, browser and shader caches, update
+              leftovers, crash dumps) is deleted permanently by default so disk
+              space is actually reclaimed, with a per-clean checkbox to move
+              items to the Recycle Bin instead. Cookies, logins, saved
+              passwords, history, bookmarks and local storage are strictly
+              excluded, and orphaned uninstall registry keys are exported to a
+              <code>.reg</code> backup before removal.
             </p>
           </details>
           <details>

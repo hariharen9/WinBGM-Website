@@ -365,17 +365,17 @@ button {
   flex: none;
   background: #10161c;
   border-right: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 15px 9px;
+  padding: 12px 9px;
   position: relative;
 }
 .mock-nav-label {
   font: 7px var(--mono);
   letter-spacing: 1px;
   color: #62707e;
-  margin: 0 0 8px 8px;
+  margin: 0 0 6px 8px;
 }
 .mock-nav {
-  height: 28px;
+  height: 23px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -383,7 +383,7 @@ button {
   border-radius: 4px;
   color: #8e9aa6;
   font-size: 8px;
-  margin-bottom: 2px;
+  margin-bottom: 1px;
 }
 .mock-nav.active {
   background: rgba(66, 137, 224, 0.14);
@@ -403,7 +403,7 @@ button {
 .mock-divider {
   height: 1px;
   background: rgba(255, 255, 255, 0.07);
-  margin: 13px 5px;
+  margin: 8px 5px;
 }
 .mock-machine {
   position: absolute;
@@ -4253,5 +4253,174 @@ h3 {
     animation: none;
     border-top-color: #77c3a0;
     border-color: rgba(119, 195, 160, 0.55);
+  }
+}
+
+/* ============================================================
+   v1.2 - JUNK CLEANER & WINGET UPDATES FEATURE CARDS
+   ============================================================ */
+
+.feature-junk,
+.feature-updates {
+  min-height: 520px;
+}
+
+.junk-graphic,
+.updates-graphic {
+  position: absolute;
+  inset: 58px 15px 210px;
+  background: #111920;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 5px;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.junk-head,
+.updates-head {
+  display: flex;
+  justify-content: space-between;
+  font: 9px var(--mono);
+  letter-spacing: 0.8px;
+  color: #a4b4c3;
+}
+.junk-head span:last-child,
+.updates-head span:last-child {
+  color: #79b7e8;
+}
+
+.junk-row,
+.updates-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  background: #10171e;
+  padding: 8px 10px;
+  font-size: 11px;
+  color: #b6c2cd;
+}
+.junk-row span,
+.updates-row span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.junk-row small,
+.updates-row small {
+  margin-left: auto;
+  flex: none;
+  font: 8.5px var(--mono);
+  letter-spacing: 0.5px;
+  color: #7d8995;
+  white-space: nowrap;
+}
+
+.junk-dot {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #65a6e0;
+}
+.junk-shield {
+  flex: none;
+  font-style: normal;
+  color: #74bd9d;
+  font-size: 11px;
+}
+.junk-row.guarded,
+.updates-row.guarded {
+  border-color: rgba(116, 189, 157, 0.22);
+  background: rgba(116, 189, 157, 0.05);
+}
+.junk-row.guarded small,
+.updates-row.guarded small {
+  color: #74bd9d;
+}
+
+.updates-row.done small {
+  color: #74bd9d;
+}
+.updates-row.active {
+  border-color: rgba(119, 195, 160, 0.28);
+}
+.updates-row.active small {
+  color: #77c3a0;
+}
+.updates-row.err {
+  border-color: rgba(232, 182, 106, 0.28);
+}
+.updates-row.err small {
+  color: #e8b66a;
+}
+.updates-warn {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-style: normal;
+  font: 700 8px var(--mono);
+  color: #e8b66a;
+  border: 1px solid rgba(232, 182, 106, 0.45);
+}
+
+.junk-foot,
+.updates-foot {
+  margin-top: auto;
+  border-top: 1px dashed rgba(255, 255, 255, 0.09);
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.junk-foot span,
+.junk-foot em,
+.updates-foot span,
+.updates-foot em {
+  font: 8.5px var(--mono);
+  letter-spacing: 0.8px;
+}
+.junk-foot span,
+.updates-foot span {
+  color: #8d99a6;
+}
+.junk-foot em,
+.updates-foot em {
+  font-style: normal;
+  color: #79b7e8;
+  white-space: nowrap;
+}
+
+@media (max-width: 560px) {
+  .feature-junk,
+  .feature-updates {
+    min-height: 470px;
+  }
+  .junk-graphic,
+  .updates-graphic {
+    inset: 52px 14px 235px;
+    padding: 13px 11px;
+    gap: 6px;
+  }
+  .junk-row,
+  .updates-row {
+    padding: 6px 8px;
+    font-size: 10px;
+    gap: 7px;
+  }
+  .junk-row small,
+  .updates-row small {
+    font-size: 8px;
+  }
+  .junk-row:nth-child(4),
+  .updates-row.err {
+    display: none;
   }
 }
